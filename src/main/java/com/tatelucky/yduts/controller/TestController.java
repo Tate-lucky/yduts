@@ -59,7 +59,7 @@ public class TestController {
 
 
         AggregationUtil<Buyer> aggregationUtil = new AggregationUtil<>();
-        aggregationUtil.addMeta(new Meta<Buyer>("carName", "demoService", "getCarByName", "name") {
+        aggregationUtil.addMeta(new Meta<Buyer>("buyerName", "demoService", "getCarByName", "name") {
             @Override
             public void fillMainBean(Buyer mainBean, Object serviceBean) {
                 Car car = (Car) serviceBean;

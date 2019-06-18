@@ -14,5 +14,5 @@ public class Buyer implements Serializable{
     private String carName;
     private String color;
     private String modelName;
-    private String BuyerName;
+    private String buyerName;
 }
