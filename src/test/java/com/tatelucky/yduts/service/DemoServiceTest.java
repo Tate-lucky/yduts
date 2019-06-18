@@ -1,6 +1,5 @@
 package com.tatelucky.yduts.service;
 
-import com.tatelucky.yduts.BaseTest;
 import com.tatelucky.yduts.YdutsApplicationTests;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +25,6 @@ class DemoServiceTest {
 
     @Test
     void getPerple() {
-        System.out.println(demoService.getPerple());
+        System.out.println(demoService.getPeople());
     }
 }

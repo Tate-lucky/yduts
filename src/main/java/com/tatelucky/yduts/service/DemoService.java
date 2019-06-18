@@ -1,7 +1,7 @@
 package com.tatelucky.yduts.service;
 
 import com.tatelucky.yduts.model.Car;
-import com.tatelucky.yduts.model.Perple;
+import com.tatelucky.yduts.model.People;
 
 /**
  * @author tangsheng
@@ -9,5 +9,7 @@ import com.tatelucky.yduts.model.Perple;
  */
 public interface DemoService {
     Car getCar();
-    Perple getPerple();
+    People getPeople();
+    Car getCarByName(String name);
+
 }

@@ -11,6 +11,8 @@ import java.io.Serializable;
 @Data
 public class Buyer implements Serializable{
     private static final long serialVersionUID = 5083631982887667622L;
-    private Car car;
-    private Perple perple;
+    private String carName;
+    private String color;
+    private String modelName;
+    private String BuyerName;
 }
