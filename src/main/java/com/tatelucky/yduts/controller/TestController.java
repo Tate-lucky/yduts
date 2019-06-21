@@ -2,7 +2,6 @@ package com.tatelucky.yduts.controller;
 
 import com.tatelucky.yduts.model.Buyer;
 import com.tatelucky.yduts.model.Car;
-import com.tatelucky.yduts.model.People;
 import com.tatelucky.yduts.service.DemoService;
 import com.tatelucky.yduts.util.aggregation.AggregationUtil;
 import com.tatelucky.yduts.util.aggregation.model.Meta;
