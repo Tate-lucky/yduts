@@ -17,7 +17,7 @@ import java.util.concurrent.CountDownLatch;
  * @author tangsheng
  * @since 2019-06-19
  */
-public class TestZk {
+public class TestZk implements Watcher {
     //闭锁，使用信号量进行阻塞，防止程序还没连接上zk就往下跑，直接报异常
     private static final CountDownLatch countDownLatch = new CountDownLatch(1);
     private static final String connStr = "127.0.0.1:2181";
@@ -47,6 +47,9 @@ public class TestZk {
          * 参数1：路径
          * 参数2：内容
          * 参数3：节点权限
+         *      OPEN_ACL_UNSAFE :完全开放
+         *      CREATOR_ALL_ACL :创建该znode的连接拥有所有权限
+         *      READ_ACL_UNSAFE :所有的客户端都可读
          * 参数4：节点类型：
          *      PERSISTENT：持久 PERSISTENT_SEQUENTIAL： 持久顺序
          *      EPHEMERAL ：临时 EPHEMERAL_SEQUENTIAL ： 临时顺序
@@ -99,7 +102,10 @@ public class TestZk {
         }
         System.out.println("关闭成功");
         System.in.read();
+    }
 
-
+    @Override
+    public void process(WatchedEvent watchedEvent) {
+        //实现process相关实现
     }
 }
