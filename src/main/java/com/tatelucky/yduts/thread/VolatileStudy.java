@@ -11,6 +11,30 @@ public class VolatileStudy {
     public static void main(String[] args) {
         MyData myData = new MyData();
 
+        for (int i = 1; i <= 20; i++) {
+            new Thread(() -> {
+                for (int j = 1; j <= 1000; j++) {
+                    myData.addPlusPlus();
+                }
+            }, String.valueOf(i)).start();
+        }
+
+        //等上线全部计算完成，2是因为main线程和gc线程
+        while (Thread.activeCount() > 2) {
+            Thread.yield();
+        }
+
+        //少于20000 说明不具备原子性  main：19565，也有可能执行到结果是20000
+        System.out.println(Thread.currentThread().getName() + "：" + myData.number);
+
+    }
+
+    /**
+     * 保证可见性，通知其他线程，主内存被修改了
+     */
+    public static void seeOk() {
+        MyData myData = new MyData();
+
         new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + " coming");
             try {
@@ -32,10 +56,14 @@ public class VolatileStudy {
 }
 
 class MyData {
-    //    int number = 0;
-    volatile int number = 0;
+    //    int number = 0;  无可见性
+    volatile int number = 0;  //保证可见性
 
     public void addTo60() {
         this.number = 60;
+    }
+
+    public void addPlusPlus() {
+        number++;
     }
 }
