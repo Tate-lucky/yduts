@@ -22,7 +22,7 @@ import java.util.List;
  * java.lang.OutOfMemoryError: Java heap space
  * Dumping heap to /Users/tate/Desktop/dump/java_pid9917.hprof ...
  * <p>
- * 获取到这个文件后，我们可以通过
+ * 获取到这个文件后，我们可以通过jvisualvm查看相关的信息
  *
  * @author tangsheng
  * @since 2019-10-14
