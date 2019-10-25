@@ -64,6 +64,7 @@ class MyData {
     }
 
     public void addPlusPlus() {
+        //一般不具有原子性，在并发环境下一般会去用atomicInteger,可以看CasDemo
         number++;
     }
 }
