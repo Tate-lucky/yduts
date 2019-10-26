@@ -1,0 +1,13 @@
+在并发环境下，使用一些常规的集合类，很容易造成并发的问题
+像arraylist这种，在并发的环境下，很容易出现一些java.util.ConcurrentModificationException这种异常
+我们通常会用一些Collections.synchronizedList(new ArrayList<>()),Vector来解决,
+但是不够高级，推荐使用并发包juc下面的类，比如CopyOnWriteArrayList
+
+知道如何解决问题了，还要知道为什么可以这么解决，知其所以然
+看代码，底层是用了ReentrantLock，是使用了锁的，ReentrantLock底层又是aqs，aos做的
+    而且这种集合类都去用volatile
+
+
+hashset底层是hashmap，但是hashset只放了一个值，而hashmap只放了一个。为什么？因为key就是放进去的元素，value就是一个nwe obj
+
+
