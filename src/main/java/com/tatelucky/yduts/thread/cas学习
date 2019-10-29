@@ -14,4 +14,4 @@ cas
 
 什么是ABA问题：狸猫换太子  只管开头和和结尾，中间不关心
 如何解决ABA问题
-       原子引用 参照 AtomicReferenceDemo =》 时间戳的原子引用，参照AtomicStampedReferenceDemo
+       原子引用 参照 AtomicReferenceDemo =》 时间戳的原子引用，参照AbaDemo
