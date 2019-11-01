@@ -9,3 +9,27 @@ JMM 内存模型(不是真实存在的)：  主内存（内存共享），各线
 原子 sync
 有序 volatile
 
+
+sync和lock 区别：
+
+构成上：
+sync是关键字，系统级别，属于jvm层面，是基于monitorenter，monitorexit实现的，底层是通过monitor对象实现的，
+            wait和notify也是通过monitor实现的，只有在同步块和方法中才能调用wait和notify，
+            两次monitorexit保证不会死锁，退出了两次
+lock是具体的类
+
+使用方法：
+lock需要手动关闭，否则会造成死锁，一般try  catch finally实现。sync不需要
+
+等待是否可中断：
+sync除非完成或者抛异常，不然不能中断
+lock是可以的
+
+锁的类别：
+sync非公平
+lock看具体实现，两者都可以
+
+锁绑定多个condition
+sync没有
+lock可以，不是和sync一样唤醒一个或者全部，精确唤醒
+
