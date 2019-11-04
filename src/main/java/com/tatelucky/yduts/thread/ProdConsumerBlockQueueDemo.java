@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 生产者消费者的 阻塞队列版本
  * 多线程情况下千万别要 ++ -- 操作！！！
- * 不需要自己去控制wait notify，也不需要去await 和 signal
+ * 不需要自己去控制wait notify，也不需要去await 和 signal，操作起来很麻烦，现在根本不需要去处理，只要控制一个flag
  *
  * @author tangsheng
  * @since 2019-10-29
