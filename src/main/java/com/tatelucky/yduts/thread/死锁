@@ -1,0 +1,11 @@
+死锁：
+是什么：两个线程以上互相等待对方的现象
+
+死锁demo：
+DeathLockDemo
+
+查看死锁：
+jps查看pid
+jstack pid 查看
+
+这种情况只能修复，重启了

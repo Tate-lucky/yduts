@@ -12,7 +12,7 @@
 3.提高线程的可管理性
 
 
-构造参数理解：
+7大构造参数理解：
 
 public ThreadPoolExecutor(int corePoolSize,
                           int maximumPoolSize,
@@ -22,16 +22,24 @@ public ThreadPoolExecutor(int corePoolSize,
                           ThreadFactory threadFactory,
                           RejectedExecutionHandler handler)
 
-corePoolSize 核心线程池大小
-maximumPoolSize 线程池最大容量
-keepAliveTime 空闲线程可存活时间
+corePoolSize 常驻核心线程数
+maximumPoolSize 线程池最大线程数 >= 1  core和阻塞队列满了，从corePoolSize -> maximumPoolSize
+keepAliveTime 空闲线程可存活时间 线程数大于corePoolSize时候才有用
 TimeUnit 时间单位
 workQueue 阻塞队列（见BlockingQueueDemo）
-可能还有：
-threadFactory 生产线程的工厂类
-handle  饱和丢弃策略
-        1.AbortPolicy  废弃终止
+下面两个一般不直接用
+threadFactory 生产工作线程的工厂类
+handle  饱和丢弃策略，当队列满了并且工作线程大于线程最大线程数
+        1.AbortPolicy  废弃终止 默认配置，满了报异常
         2.CallerRunsPolicy 用调用者所在的线程来执行任务
-        3.DiscardPolicy 直接丢弃任务
-        4.DiscardOldestPolicy 丢弃阻塞队列中靠最前的任务，并执行当前任务
+        3.DiscardPolicy 直接丢弃。新任务加入到当前的任务
+        4.DiscardOldestPolicy 丢弃阻塞队列中靠最前的任务（等待最久的任务），把当前的
+
+规范不建议使用 Executors去创建线程池
+
+如何合理的的去配置参数：
+首先你得知道你机器的cpu核心数量，
+cpu密集：大量的运算，无阻塞，尽可能少的去配置线程数量，一般 cpu核数+1 的线程池
+
+io密集：不是一直在执行，要充分利用cpu的运算能力 一般 cpu核数/（1-0.8）- cpu核数/（1-0.9） 8核一般80个
 
