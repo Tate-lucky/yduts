@@ -19,7 +19,7 @@ public class CountDownLatchDemo {
         CountDownLatch countDownLatch = new CountDownLatch(6);
         for (int i = 0; i < 6; i++) {
             new Thread(() -> {
-                System.out.println(Thread.currentThread().getName() + " \t + get out");
+                System.out.println(Thread.currentThread().getName() + " \t  get out");
                 countDownLatch.countDown();
             }, String.valueOf(i)).start();
         }

@@ -27,7 +27,7 @@ public class ThreadPoolDemo {
 ////        ThreadPoolExecutor(nThreads, nThreads,
 ////                0L, TimeUnit.MILLISECONDS,
 ////                new LinkedBlockingQueue<Runnable>());
-//        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
 //
 //
 //        //单线程 LinkedBlockingQueue  适用于一个任务一个任务执行的
