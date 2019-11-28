@@ -6,13 +6,12 @@ import java.util.concurrent.Future;
 import java.util.concurrent.RecursiveTask;
 
 /**
- * ForkJoinDemo 思想类似递归，打一个大人物
+ * ForkJoinDemo 思想类似递归，讲一个大任务拆分成小任务去执行，类似于mapreduce的意思
  *
  * @author tangsheng
  * @since 2019-11-27
  */
 public class ForkJoinDemo {
-
 
     //RecursiveTask：用于有返回值的任务。
     //RecursiveAction：用于没有返回值的任务。
@@ -40,13 +39,17 @@ public class ForkJoinDemo {
                 TaskCount taskA = new TaskCount(start, middle);
                 TaskCount taskB = new TaskCount(middle + 1, end);
 
+                //fork()    在当前线程运行的线程池中安排一个异步执行。简单的理解就是再创建一个子任务
                 taskA.fork();
                 taskB.fork();
 
+                //join()    当任务完成的时候返回计算结果。
                 Integer resultA = taskA.join();
                 Integer resultB = taskB.join();
 
+
                 result = resultA + resultB;
+                System.out.println(Thread.currentThread().getName() + "\t cal result : " + result);
             }
 
 
@@ -57,9 +60,10 @@ public class ForkJoinDemo {
     public static void main(String[] args) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         //1 + .... + 100
-        TaskCount taskCount = new TaskCount(1, 100000000);
+        TaskCount taskCount = new TaskCount(1, 10000);
 
         long start = System.currentTimeMillis();
+        //submit会返回ForkJoinTask，而execute不会
         Future<Integer> future = forkJoinPool.submit(taskCount);
 
 
@@ -80,7 +84,7 @@ public class ForkJoinDemo {
 
         int result = 0;
         long start1 = System.currentTimeMillis();
-        for (int i = 1; i <= 100000000; i++) {
+        for (int i = 1; i <= 10000; i++) {
             result += i;
         }
         System.out.println(result);

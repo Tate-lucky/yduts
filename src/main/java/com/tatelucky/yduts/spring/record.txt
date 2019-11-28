@@ -1,0 +1,15 @@
+IOC:
+
+BeanFactory -> HierarchicalBeanFactory -> ConfigurableBeanFactory
+
+BeanFactory  主要是为了 getBean
+HierarchicalBeanFactory  获取双亲IOC容器的方法 getParentBeanFactory
+ConfigurableBeanFactory  设置双亲IOC容器的方法 setParentBeanFactory 设置bean的后置处理器方法 addBeanPostProcessor
+
+
+BeanFactory -> ListableBeanFactory -> ApplicationContext
+                                   -> WebApplicationContext
+                                   -> ConfigurableApplicationContext
+
+
+ListableBeanFactory  主要是 getBeanDefinationsName
