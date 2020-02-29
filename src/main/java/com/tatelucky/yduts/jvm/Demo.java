@@ -8,7 +8,7 @@ package com.tatelucky.yduts.jvm;
  */
 public class Demo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //分配了三个数组，每个数组1mb
         //在eden区放入了一个1mb的对象
         byte[] array1 = new byte[1024 * 1024];
@@ -21,7 +21,9 @@ public class Demo {
         array1 = null;
 
         //分配一个2mb的对象到eden区，此时eden是存放不下的，之前的已经占了3mb，还剩1mb，触发young gc
-        byte[] array2 = new byte[2 * 1024 * 1024];
+        byte[] array2 = new byte[1000 * 1024 * 1024];
 
+
+        Thread.sleep(123456789L);
     }
 }
